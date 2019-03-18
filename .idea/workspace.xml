@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c9580ac-7d70-40e0-a0d6-5a74ba85c294" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Perft.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PerftSuite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PerftSuiteTwo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Runner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Timer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Test2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Chess.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Chess.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Chess/PerftSuite.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/PerftSuite.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PerftSuite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PerftSuite.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,13 +18,16 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/Chess$PerftSuite.ic" NAME="PerftSuite Coverage Results" MODIFIED="1552921446562" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="241" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="639" selection-start-line="639" selection-end-line="639" />
+            <state relative-caret-position="34">
+              <caret line="2" column="15" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
               <folding>
                 <element signature="e#30339#30340#0" expanded="true" />
                 <element signature="e#30369#30370#0" expanded="true" />
@@ -82,17 +81,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Runner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="85">
+              <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/PerftSuite.java">
+        <entry file="file://$PROJECT_DIR$/src/Test2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="364" column="69" selection-start-line="364" selection-start-column="39" selection-end-line="364" selection-end-column="69" />
+            <state relative-caret-position="306">
+              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -104,7 +103,7 @@
         <entry file="file://$PROJECT_DIR$/src/PerftSuiteTwo.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="219">
-              <caret line="212" column="44" lean-forward="true" selection-start-line="210" selection-start-column="16" selection-end-line="212" selection-end-column="44" />
+              <caret line="212" column="44" selection-start-line="210" selection-start-column="16" selection-end-line="212" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -144,6 +143,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JUnit5 Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -164,15 +164,19 @@
         <option value="$PROJECT_DIR$/src/Timer.java" />
         <option value="$PROJECT_DIR$/src/PerftSuiteTwo.java" />
         <option value="$PROJECT_DIR$/src/Runner.java" />
+        <option value="$PROJECT_DIR$/src/TestTest.java" />
+        <option value="$PROJECT_DIR$/src/BoardTest.java" />
         <option value="$PROJECT_DIR$/src/PerftSuite.java" />
+        <option value="$PROJECT_DIR$/src/Test.java" />
+        <option value="$PROJECT_DIR$/src/Test2.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="440" />
-    <option name="y" value="26" />
-    <option name="width" value="1311" />
-    <option name="height" value="1000" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -191,6 +195,11 @@
             <path>
               <item name="Chess" type="b2602c69:ProjectViewProjectNode" />
               <item name="Chess" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Chess" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Chess" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -201,11 +210,26 @@
   </component>
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="true" />
-    <property name="Repository.Attach.Annotations" value="true" />
+    <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="true" />
     <property name="Repository.Attach.Sources" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552922396212" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552932056890" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="create.test.in.the.same.root" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -219,7 +243,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.PerftSuite">
+  <component name="RunManager" selected="TestNG.Test2">
     <configuration name="Runner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Runner" />
       <module name="Chess" />
@@ -236,32 +260,45 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PerftSuite.perft" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PerftSuite.perft126" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Chess" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="PerftSuite" />
-      <option name="METHOD_NAME" value="perft" />
+      <option name="METHOD_NAME" value="perft126" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PerftSuite.perft0" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Test2" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="Chess" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="PerftSuite" />
-      <option name="METHOD_NAME" value="perft0" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="Test2" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test2.perft2" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Chess" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Test2" />
+      <option name="METHOD_NAME" value="perft2" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.Test2" />
+        <item itemvalue="TestNG.Test2.perft2" />
         <item itemvalue="JUnit.PerftSuite" />
         <item itemvalue="Application.Runner" />
-        <item itemvalue="JUnit.PerftSuite.perft0" />
-        <item itemvalue="JUnit.PerftSuite.perft" />
+        <item itemvalue="JUnit.PerftSuite.perft126" />
       </list>
     </recent_temporary>
   </component>
@@ -279,42 +316,41 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PerftSuite_perft - 2019.03.18 at 09h 49m 01s.xml">
-      <configuration name="PerftSuite.perft" configurationId="JUnit" />
+    <history-entry file="PerftSuite_perft126 - 2019.03.18 at 12h 16m 34s.xml">
+      <configuration name="PerftSuite.perft126" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PerftSuite - 2019.03.18 at 10h 05m 11s.xml">
+    <history-entry file="PerftSuite_perft126 - 2019.03.18 at 12h 18m 20s.xml">
+      <configuration name="PerftSuite.perft126" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PerftSuite_perft126 - 2019.03.18 at 12h 22m 52s.xml">
+      <configuration name="PerftSuite.perft126" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PerftSuite_perft126 - 2019.03.18 at 12h 24m 33s.xml">
+      <configuration name="PerftSuite.perft126" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PerftSuite - 2019.03.18 at 12h 28m 50s.xml">
       <configuration name="PerftSuite" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PerftSuite - 2019.03.18 at 10h 06m 34s.xml">
+    <history-entry file="PerftSuite - 2019.03.18 at 12h 33m 31s.xml">
       <configuration name="PerftSuite" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PerftSuite - 2019.03.18 at 10h 08m 09s.xml">
+    <history-entry file="PerftSuite - 2019.03.18 at 12h 54m 27s.xml">
       <configuration name="PerftSuite" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PerftSuite_perft - 2019.03.18 at 10h 18m 22s.xml">
-      <configuration name="PerftSuite.perft" configurationId="JUnit" />
+    <history-entry file="Test2 - 2019.03.18 at 13h 16m 25s.xml">
+      <configuration name="Test2" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="PerftSuite - 2019.03.18 at 10h 20m 54s.xml">
-      <configuration name="PerftSuite" configurationId="JUnit" />
+    <history-entry file="Test2 - 2019.03.18 at 13h 37m 50s.xml">
+      <configuration name="Test2" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="PerftSuite - 2019.03.18 at 10h 50m 37s.xml">
-      <configuration name="PerftSuite" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PerftSuite - 2019.03.18 at 10h 54m 27s.xml">
-      <configuration name="PerftSuite" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PerftSuite_perft0 - 2019.03.18 at 11h 00m 30s.xml">
-      <configuration name="PerftSuite.perft0" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PerftSuite - 2019.03.18 at 11h 00m 44s.xml">
-      <configuration name="PerftSuite" configurationId="JUnit" />
+    <history-entry file="Test2_perft2 - 2019.03.18 at 13h 53m 40s.xml">
+      <configuration name="Test2.perft2" configurationId="TestNG" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="440" y="26" width="1311" height="1000" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3788969" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25266525" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -323,15 +359,16 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49960032" visible="true" weight="0.35023043" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.57036245" visible="true" weight="0.32900432" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32900432" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5003997" side_tool="true" visible="true" weight="0.35023043" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.42963752" side_tool="true" visible="true" weight="0.32900432" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.32900432" />
+      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.4989339" weight="0.32900432" />
+      <window_info anchor="right" id="Coverage" side_tool="true" weight="0.32995737" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -350,10 +387,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Perft.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="43" />
+          <caret line="21" column="42" selection-start-line="21" selection-start-column="42" selection-end-line="21" selection-end-column="44" />
+          <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#137#138#0" expanded="true" />
+            <element signature="e#175#176#0" expanded="true" />
+            <element signature="e#197#198#0" expanded="true" />
+            <element signature="e#232#233#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PerftSuiteTwo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="212" column="44" selection-start-line="210" selection-start-column="16" selection-end-line="212" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TestTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="1" lean-forward="true" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BoardTest.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="639" selection-start-line="639" selection-end-line="639" />
+        <state relative-caret-position="34">
+          <caret line="2" column="15" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
           <folding>
             <element signature="e#30339#30340#0" expanded="true" />
             <element signature="e#30369#30370#0" expanded="true" />
@@ -403,48 +476,111 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Runner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PerftSuiteTwo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="212" column="44" lean-forward="true" selection-start-line="210" selection-start-column="16" selection-end-line="212" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Perft.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="43" />
-          <caret line="21" column="42" selection-start-line="21" selection-start-column="42" selection-end-line="21" selection-end-column="44" />
-          <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#137#138#0" expanded="true" />
-            <element signature="e#175#176#0" expanded="true" />
-            <element signature="e#197#198#0" expanded="true" />
-            <element signature="e#232#233#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/PerftSuite.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="364" column="69" selection-start-line="364" selection-start-column="39" selection-end-line="364" selection-end-column="69" />
+        <state relative-caret-position="-83714">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Runner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.IdeaIC2018.3/system/temp-testng-customsuite.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Test2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Python 2.7 interpreter library</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>11</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Chess</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
