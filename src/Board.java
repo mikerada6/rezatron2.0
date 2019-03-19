@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Board {
-    private long wp, wr, wn, wb, wk, wq, qp, br, bn, bb, bk, bq, bp;
+    private long wp, wr, wn, wb, wk, wq,  br, bn, bb, bk, bq, bp;
     private boolean bkc, bqc, wkc, wqc;
     private int moveCount;
     private long fortyMoveCount;
