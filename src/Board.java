@@ -1,10 +1,6 @@
 import java.util.ArrayList;
 
 public class Board {
-    private long wp, wr, wn, wb, wk, wq,  br, bn, bb, bk, bq, bp;
-    private boolean bkc, bqc, wkc, wqc;
-    private int moveCount;
-    private long fortyMoveCount;
     public static final int NORMAL = 0;
     public static final int CAPTURE = 1;
     public static final int EP = 2;
@@ -17,61 +13,66 @@ public class Board {
     public static final int KNIGHT = 4;
     public static final int ROOK = 5;
     public static final int EPFLAG = 9;
+    public static final int pawnPoints = 10;
+    public static final int knightPoints = 30;
+    public static final int bishopPoints = 30;
+    public static final int rookPoints = 50;
     // 7 + rank - file
-    private static final short[] knightPlacement = { -50, -40, -30, -30, -30,
+    public static final int queenPoints = 90;
+    public static final int kingPoints = 900;
+    private static final short[] knightPlacement = {-50, -40, -30, -30, -30,
             -30, -40, -50, -40, -20, 0, 0, 0, 0, -20, -40, -30, 0, 10, 15, 15,
             10, 0, -30, -30, 5, 15, 20, 20, 15, 5, -30, -30, 0, 15, 20, 20, 15,
             0, -30, -30, 5, 10, 15, 15, 10, 5, -30, -40, -20, 0, 5, 5, 0, -20,
-            -40, -50, -40, -30, -30, -30, -30, -40, -50, };
-    private static final short[] blackKingPlacement = { -30, -40, -40, -50,
+            -40, -50, -40, -30, -30, -30, -30, -40, -50,};
+    private static final short[] blackKingPlacement = {-30, -40, -40, -50,
             -50, -40, -40, -30, -30, -40, -40, -50, -50, -40, -40, -30, -30,
             -40, -40, -50, -50, -40, -40, -30, -30, -40, -40, -50, -50, -40,
             -40, -30, -20, -30, -30, -40, -40, -30, -30, -20, -10, -20, -20,
             -20, -20, -20, -20, -10, 20, 20, 0, 0, 0, 0, 20, 20, 20, 30, 10, 0,
-            0, 10, 30, 20 };
-    private static final short[] whitePawnPlacement = { 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 10, 30, 20};
+    private static final short[] whitePawnPlacement = {0, 0, 0, 0, 0, 0, 0, 0,
             5, 10, 10, -20, -20, 10, 10, 5, 5, -5, -10, 0, 0, -10, -5, 5, 0, 0,
             0, 20, 20, 0, 0, 0, 5, 5, 10, 25, 25, 10, 5, 5, 10, 10, 20, 30, 30,
-            20, 10, 10, 50, 50, 50, 50, 50, 50, 50, 50, 0, 0, 0, 0, 0, 0, 0, 0, };
-
-    private static final short[] blackPawnPlacement = { 0, 0, 0, 0, 0, 0, 0, 0,
+            20, 10, 10, 50, 50, 50, 50, 50, 50, 50, 50, 0, 0, 0, 0, 0, 0, 0, 0,};
+    private static final short[] blackPawnPlacement = {0, 0, 0, 0, 0, 0, 0, 0,
             50, 50, 50, 50, 50, 50, 50, 50, 10, 10, 20, 30, 30, 20, 10, 10, 5,
             5, 10, 25, 25, 10, 5, 5, 0, 0, 0, 20, 20, 0, 0, 0, 5, -5, -10, 0,
             0, -10, -5, 5, 5, 10, 10, -20, -20, 10, 10, 5, 0, 0, 0, 0, 0, 0, 0,
-            0 };
-    private static final short[] bishopPlacement = { -20, -10, -10, -10, -10,
+            0};
+    private static final short[] bishopPlacement = {-20, -10, -10, -10, -10,
             -10, -10, -20, -10, 0, 0, 0, 0, 0, 0, -10, -10, 0, 5, 10, 10, 5, 0,
             -10, -10, 5, 5, 10, 10, 5, 5, -10, -10, 0, 10, 10, 10, 10, 0, -10,
             -10, 10, 10, 10, 10, 10, 10, -10, -10, 5, 0, 0, 0, 0, 5, -10, -20,
-            -10, -10, -10, -10, -10, -10, -20, };
-    private static final short[] queenPlacement = { -20, -10, -10, -5, -5, -10,
+            -10, -10, -10, -10, -10, -10, -20,};
+    private static final short[] queenPlacement = {-20, -10, -10, -5, -5, -10,
             -10, -20, -10, 0, 0, 0, 0, 0, 0, -10, -10, 0, 5, 5, 5, 5, 0, -10,
             -5, 0, 5, 5, 5, 5, 0, -5, 0, 0, 5, 5, 5, 5, 0, -5, -10, 5, 5, 5, 5,
             5, 0, -10, -10, 0, 5, 0, 0, 0, 0, -10, -20, -10, -10, -5, -5, -10,
-            -10, -20 };
-    private static final short[] rookPlacement = { 0, 0, 0, 0, 0, 0, 0, 0, 5,
+            -10, -20};
+    private static final short[] rookPlacement = {0, 0, 0, 0, 0, 0, 0, 0, 5,
             10, 10, 10, 10, 10, 10, 5, -5, 0, 0, 0, 0, 0, 0, -5, -5, 0, 0, 0,
             0, 0, 0, -5, -5, 0, 0, 0, 0, 0, 0, -5, -5, 0, 0, 0, 0, 0, 0, -5,
-            -5, 0, 0, 0, 0, 0, 0, -5, 0, 0, 0, 5, 5, 0, 0, 0 };
-    private static final long[] diagonalMask = { 128L, 32832L, 8405024L,
+            -5, 0, 0, 0, 0, 0, 0, -5, 0, 0, 0, 5, 5, 0, 0, 0};
+    private static final long[] diagonalMask = {128L, 32832L, 8405024L,
             2151686160L, 550831656968L, 141012904183812L, 36099303471055874L,
             -9205322385119247871L, 4620710844295151872L, 2310355422147575808L,
             1155177711073755136L, 577588855528488960L, 288794425616760832L,
-            144396663052566528L, 72057594037927936L };
+            144396663052566528L, 72057594037927936L};
     // rank + file
-    private static final long[] antiDiagonalMask = { 1L, 258L, 66052L,
+    private static final long[] antiDiagonalMask = {1L, 258L, 66052L,
             16909320L, 4328785936L, 1108169199648L, 283691315109952L,
             72624976668147840L, 145249953336295424L, 290499906672525312L,
             580999813328273408L, 1161999622361579520L, 2323998145211531264L,
-            4647714815446351872L, -9223372036854775808L };
-    private static final long[] rankMask = { 255L, 65280L, 16711680L,
+            4647714815446351872L, -9223372036854775808L};
+    private static final long[] rankMask = {255L, 65280L, 16711680L,
             4278190080L, 1095216660480L, 280375465082880L, 71776119061217280L,
-            -72057594037927936L };
-    private static final long[] fileMask = { 72340172838076673L,
+            -72057594037927936L};
+    private static final long[] fileMask = {72340172838076673L,
             144680345676153346L, 289360691352306692L, 578721382704613384L,
             1157442765409226768L, 2314885530818453536L, 4629771061636907072L,
-            -9187201950435737472L };
-    private static final long[] squares = { 1L, 2L, 4L, 8L, 16L, 32L, 64L,
+            -9187201950435737472L};
+    private static final long[] squares = {1L, 2L, 4L, 8L, 16L, 32L, 64L,
             128L, 256L, 512L, 1024L, 2048L, 4096L, 8192L, 16384L, 32768L,
             65536L, 131072L, 262144L, 524288L, 1048576L, 2097152L, 4194304L,
             8388608L, 16777216L, 33554432L, 67108864L, 134217728L, 268435456L,
@@ -84,21 +85,20 @@ public class Board {
             4503599627370496L, 9007199254740992L, 18014398509481984L,
             36028797018963968L, 72057594037927936L, 144115188075855872L,
             288230376151711744L, 576460752303423488L, 1152921504606846976L,
-            2305843009213693952L, 4611686018427387904L, -9223372036854775808L };
-    private static final int[] order = { 56, 57, 58, 59, 60, 61, 62, 63, 48,
+            2305843009213693952L, 4611686018427387904L, -9223372036854775808L};
+    private static final int[] order = {56, 57, 58, 59, 60, 61, 62, 63, 48,
             49, 50, 51, 52, 53, 54, 55, 40, 41, 42, 43, 44, 45, 46, 47, 32, 33,
             34, 35, 36, 37, 38, 39, 24, 25, 26, 27, 28, 29, 30, 31, 16, 17, 18,
             19, 20, 21, 22, 23, 8, 9, 10, 11, 12, 13, 14, 15, 0, 1, 2, 3, 4, 5,
-            6, 7 };
-    private static final String[] letterSquares = { "a1", "b1", "c1", "d1",
+            6, 7};
+    private static final String[] letterSquares = {"a1", "b1", "c1", "d1",
             "e1", "f1", "g1", "h1", "a2", "b2", "c2", "d2", "e2", "f2", "g2",
             "h2", "a3", "b3", "c3", "d3", "e3", "f3", "g3", "h3", "a4", "b4",
             "c4", "d4", "e4", "f4", "g4", "h4", "a5", "b5", "c5", "d5", "e5",
             "f5", "g5", "h5", "a6", "b6", "c6", "d6", "e6", "f6", "g6", "h6",
             "a7", "b7", "c7", "d7", "e7", "f7", "g7", "h7", "a8", "b8", "c8",
-            "d8", "e8", "f8", "g8", "h8" };
+            "d8", "e8", "f8", "g8", "h8"};
     private static final long KING_SPAN = 460039L;
-    private static long KNIGHT_SPAN = 43234889994L;
     private static final long FILE_A = 72340172838076673L;
     private static final long FILE_H = -9187201950435737472L;
     private static final long FILE_AB = 217020518514230019L;
@@ -115,13 +115,17 @@ public class Board {
     private static final int wbn = 4;
     private static final int wqn = 5;
     private static final int wkn = 6;
-
     private static final int bpn = 7;
     private static final int brn = 8;
     private static final int bnn = 9;
     private static final int bbn = 10;
     private static final int bqn = 11;
     private static final int bkn = 12;
+    private static long KNIGHT_SPAN = 43234889994L;
+    private long wp, wr, wn, wb, wk, wq, br, bn, bb, bk, bq, bp;
+    private boolean bkc, bqc, wkc, wqc;
+    private int moveCount;
+    private long fortyMoveCount;
     // private String[] history1;
     private ArrayList<Long> history;
     private ArrayList<String> enPassantTargetHistory;
@@ -158,64 +162,6 @@ public class Board {
         moveCount = 1;
     }
 
-
-    private void updateHistory() {
-        /*
-         * history[moveCount] = wp + "," + wr + "," + wn + "," + wb + "," + wq +
-         * "," + wk + "," + bp + "," + br + "," + bn + "," + bb + "," + bq + ","
-         * + bk + "," + wkc + "," + wqc + "," + bkc + "," + bqc + "," +
-         * enPassantTarget + "," + fortyMoveCount;
-         */
-        history.add(wp);
-        history.add(wr);
-        history.add(wn);
-        history.add(wb);
-        history.add(wq);
-        history.add(wk);
-        history.add(bp);
-        history.add(br);
-        history.add(bn);
-        history.add(bb);
-        history.add(bq);
-        history.add(bk);
-        history.add((wkc ? 1L : 0L));
-        history.add((wqc ? 1L : 0L));
-        history.add((bkc ? 1L : 0L));
-        history.add((bqc ? 1L : 0L));
-        enPassantTargetHistory.add(enPassantTarget);
-        history.add((long) fortyMoveCount);
-
-    }
-
-    private int pieceAtSquare(int sqaure) {
-        if (((wp >> sqaure) & 1) == 1)
-            return wpn;
-        if (((wr >> sqaure) & 1) == 1)
-            return wrn;
-        if (((wn >> sqaure) & 1) == 1)
-            return wnn;
-        if (((wb >> sqaure) & 1) == 1)
-            return wbn;
-        if (((wq >> sqaure) & 1) == 1)
-            return wqn;
-        if (((wk >> sqaure) & 1) == 1)
-            return wkn;
-
-        if (((bp >> sqaure) & 1) == 1)
-            return bpn;
-        if (((br >> sqaure) & 1) == 1)
-            return brn;
-        if (((bn >> sqaure) & 1) == 1)
-            return bnn;
-        if (((bb >> sqaure) & 1) == 1)
-            return bbn;
-        if (((bq >> sqaure) & 1) == 1)
-            return bqn;
-        if (((bk >> sqaure) & 1) == 1)
-            return bkn;
-        return 0;
-
-    }
 
     public Board(String fenString) {
         enPassantTarget = "-";
@@ -312,10 +258,7 @@ public class Board {
                     break;
             }
         }
-        if (fenString.charAt(++charIndex) == 'w')
-            isWhitesTurn = true;
-        else
-            isWhitesTurn = false;
+        isWhitesTurn = fenString.charAt(++charIndex) == 'w';
         charIndex += 2;
         while (fenString.charAt(charIndex) != ' ') {
             switch (fenString.charAt(charIndex++)) {
@@ -355,6 +298,130 @@ public class Board {
         moveCount = 0;
         updateHistory();
         moveCount = 1;
+    }
+
+    public static ArrayList<Integer> writeMoves(long moves, int square) {
+
+        ArrayList<Integer> ans = new ArrayList<Integer>();
+        long temp = 1;
+        for (int i = 0; i < 64; i++) {
+
+            temp = moves & (temp << 1);
+            if (temp != 0) {
+                ans.add(1000 * square + 10 * i);
+            }
+        }
+        return ans;
+    }
+
+    public static int translateToInt(String move) {
+        move=move.toLowerCase();
+
+        if (move.equalsIgnoreCase("e1g1")) {
+            return (04061);
+        } else if (move.equalsIgnoreCase("e1c1")) {
+            return (04021);
+        } else if (move.equalsIgnoreCase("e8g8")) {
+            return (60621);
+        } else if (move.equalsIgnoreCase("e8c8")) {
+            return (60581);
+        }
+        String[] letterSquares = {"a1", "b1", "c1", "d1", "e1", "f1", "g1",
+                "h1", "a2", "b2", "c2", "d2", "e2", "f2", "g2", "h2", "a3",
+                "b3", "c3", "d3", "e3", "f3", "g3", "h3", "a4", "b4", "c4",
+                "d4", "e4", "f4", "g4", "h4", "a5", "b5", "c5", "d5", "e5",
+                "f5", "g5", "h5", "a6", "b6", "c6", "d6", "e6", "f6", "g6",
+                "h6", "a7", "b7", "c7", "d7", "e7", "f7", "g7", "h7", "a8",
+                "b8", "c8", "d8", "e8", "f8", "g8", "h8"};
+        String temp = "" + move;
+        String from = temp.substring(0, 2);
+        String to = temp.substring(2, 4);
+        String promote = "";
+        try {
+            promote = move.substring(4, 5);
+        } catch (StringIndexOutOfBoundsException e) {
+        }
+        String toS = "";
+        String fromS = "";
+        for (int i = 0; i < letterSquares.length; i++) {
+            if (to.equals(letterSquares[i]))
+                toS = (String.format("%02d", i));
+            if (from.equals(letterSquares[i]))
+                fromS = (String.format("%02d", i));
+        }
+        String ans = fromS + toS;
+        if (promote.equalsIgnoreCase("Q"))
+            return 1000 * Integer.parseInt(fromS) + 10 * Integer.parseInt(toS)
+                    + 2;
+        if (promote.equalsIgnoreCase("N"))
+            return 1000 * Integer.parseInt(fromS) + 10 * Integer.parseInt(toS)
+                    + 3;
+        if (promote.equalsIgnoreCase("R"))
+            return 1000 * Integer.parseInt(fromS) + 10 * Integer.parseInt(toS)
+                    + 4;
+        if (promote.equalsIgnoreCase("B"))
+            return 1000 * Integer.parseInt(fromS) + 10 * Integer.parseInt(toS)
+                    + 5;
+
+        return 1000 * Integer.parseInt(fromS) + 10 * Integer.parseInt(toS) + 0;
+    }
+
+    private void updateHistory() {
+        /*
+         * history[moveCount] = wp + "," + wr + "," + wn + "," + wb + "," + wq +
+         * "," + wk + "," + bp + "," + br + "," + bn + "," + bb + "," + bq + ","
+         * + bk + "," + wkc + "," + wqc + "," + bkc + "," + bqc + "," +
+         * enPassantTarget + "," + fortyMoveCount;
+         */
+        history.add(wp);
+        history.add(wr);
+        history.add(wn);
+        history.add(wb);
+        history.add(wq);
+        history.add(wk);
+        history.add(bp);
+        history.add(br);
+        history.add(bn);
+        history.add(bb);
+        history.add(bq);
+        history.add(bk);
+        history.add((wkc ? 1L : 0L));
+        history.add((wqc ? 1L : 0L));
+        history.add((bkc ? 1L : 0L));
+        history.add((bqc ? 1L : 0L));
+        enPassantTargetHistory.add(enPassantTarget);
+        history.add(fortyMoveCount);
+
+    }
+
+    private int pieceAtSquare(int sqaure) {
+        if (((wp >> sqaure) & 1) == 1)
+            return wpn;
+        if (((wr >> sqaure) & 1) == 1)
+            return wrn;
+        if (((wn >> sqaure) & 1) == 1)
+            return wnn;
+        if (((wb >> sqaure) & 1) == 1)
+            return wbn;
+        if (((wq >> sqaure) & 1) == 1)
+            return wqn;
+        if (((wk >> sqaure) & 1) == 1)
+            return wkn;
+
+        if (((bp >> sqaure) & 1) == 1)
+            return bpn;
+        if (((br >> sqaure) & 1) == 1)
+            return brn;
+        if (((bn >> sqaure) & 1) == 1)
+            return bnn;
+        if (((bb >> sqaure) & 1) == 1)
+            return bbn;
+        if (((bq >> sqaure) & 1) == 1)
+            return bqn;
+        if (((bk >> sqaure) & 1) == 1)
+            return bkn;
+        return 0;
+
     }
 
     public void undo() {
@@ -636,7 +703,6 @@ public class Board {
         // moves[moveCount] = move;
         moveCount++;
     }
-
 
     private String toString(Long test) {
         String rowString = "   +---+---+---+---+---+---+---+---+";
@@ -988,20 +1054,6 @@ public class Board {
 
     }
 
-    public static ArrayList<Integer> writeMoves(long moves, int square) {
-
-        ArrayList<Integer> ans = new ArrayList<Integer>();
-        long temp = 1;
-        for (int i = 0; i < 64; i++) {
-
-            temp = moves & (temp << 1);
-            if (temp != 0) {
-                ans.add(1000 * square + 10 * i);
-            }
-        }
-        return ans;
-    }
-
     private ArrayList<Integer> writeQueenMovementNeo(int square) {
         ArrayList<Integer> ans = new ArrayList<Integer>();
         long binaryS = 1L << square;
@@ -1318,44 +1370,30 @@ public class Board {
     private boolean isWhiteChecked() {
         long attacks = blackPawnAttackLeft() | blackPawnAttackRight()
                 | getBlackMovement();
-        if (isAttackedbyBlack(getWhiteKingSquare(), attacks))
-            return true;
-        return false;
+        return isAttackedbyBlack(getWhiteKingSquare(), attacks);
     }
 
     private boolean isBlackChecked() {
         long attacks = whitePawnAttackLeft() | whitePawnAttackRight()
                 | getWhiteMovement();
-        if (isAttackedbyWhite(getBlackKingSquare(), attacks))
-            return true;
-        return false;
+        return isAttackedbyWhite(getBlackKingSquare(), attacks);
     }
 
     private boolean isWhiteChecked(long attacks) {
-        if (isAttackedbyBlack(getWhiteKingSquare(), attacks))
-            return true;
-        return false;
+        return isAttackedbyBlack(getWhiteKingSquare(), attacks);
     }
 
     private boolean isBlackChecked(long attacks) {
-        if (isAttackedbyWhite(getBlackKingSquare(), attacks))
-            return true;
-        return false;
+        return isAttackedbyWhite(getBlackKingSquare(), attacks);
     }
 
     private boolean isAttackedbyWhite(int square, long attack) {
-        if ((squares[square] & attack) != 0)
-            return true;
-        return false;
+        return (squares[square] & attack) != 0;
     }
 
     private boolean isAttackedbyBlack(int square, long attack) {
-        if ((squares[square] & attack) != 0)
-            return true;
-        return false;
+        return (squares[square] & attack) != 0;
     }
-
-
 
     public ArrayList<Integer> generateMovesNeo(boolean legal) {
         ArrayList<Integer> moves = new ArrayList<Integer>();
@@ -1551,62 +1589,9 @@ public class Board {
         return ans;
     }
 
-    public static int translateToInt(String move) {
-
-        if (move.equalsIgnoreCase("e1g1")) {
-            return (04061);
-        } else if (move.equalsIgnoreCase("e1c1")) {
-            return (04021);
-        } else if (move.equalsIgnoreCase("e8g8")) {
-            return (60621);
-        } else if (move.equalsIgnoreCase("e8c8")) {
-            return (60581);
-        }
-        String[] letterSquares = { "a1", "b1", "c1", "d1", "e1", "f1", "g1",
-                "h1", "a2", "b2", "c2", "d2", "e2", "f2", "g2", "h2", "a3",
-                "b3", "c3", "d3", "e3", "f3", "g3", "h3", "a4", "b4", "c4",
-                "d4", "e4", "f4", "g4", "h4", "a5", "b5", "c5", "d5", "e5",
-                "f5", "g5", "h5", "a6", "b6", "c6", "d6", "e6", "f6", "g6",
-                "h6", "a7", "b7", "c7", "d7", "e7", "f7", "g7", "h7", "a8",
-                "b8", "c8", "d8", "e8", "f8", "g8", "h8" };
-        String temp = "" + move;
-        String from = temp.substring(0, 2);
-        String to = temp.substring(2, 4);
-        String promote = "";
-        try {
-            promote = move.substring(4, 5);
-        } catch (StringIndexOutOfBoundsException e) {
-        }
-        String toS = "";
-        String fromS = "";
-        for (int i = 0; i < letterSquares.length; i++) {
-            if (to.equals(letterSquares[i]))
-                toS = (String.format("%02d", i));
-            if (from.equals(letterSquares[i]))
-                fromS = (String.format("%02d", i));
-        }
-        String ans = fromS + toS;
-        if (promote.equalsIgnoreCase("Q"))
-            return 1000 * Integer.parseInt(fromS) + 10 * Integer.parseInt(toS)
-                    + 2;
-        if (promote.equalsIgnoreCase("N"))
-            return 1000 * Integer.parseInt(fromS) + 10 * Integer.parseInt(toS)
-                    + 3;
-        if (promote.equalsIgnoreCase("R"))
-            return 1000 * Integer.parseInt(fromS) + 10 * Integer.parseInt(toS)
-                    + 4;
-        if (promote.equalsIgnoreCase("B"))
-            return 1000 * Integer.parseInt(fromS) + 10 * Integer.parseInt(toS)
-                    + 5;
-
-        return 1000 * Integer.parseInt(fromS) + 10 * Integer.parseInt(toS) + 0;
-    }
-
     private boolean isSquareEmpty(int square) {
         long all = getAll();
-        if (((all >> square) & 1) == 1)
-            return false;
-        return true;
+        return ((all >> square) & 1) != 1;
     }
 
     private String getSqaureName(int from) {
@@ -1799,5 +1784,11 @@ public class Board {
         }
         printBoard += "     a   b   c   d   e   f   g   h \n\n";
         return printBoard;
+    }
+
+    public int evaluateBoard() {
+
+        return countBits(wp) * pawnPoints + countBits(wr) * rookPoints + countBits(wn) * knightPoints + countBits(wb) * bishopPoints + countBits(wq) * queenPoints + countBits(wk) * kingPoints -
+                countBits(bp) * pawnPoints - countBits(br) * rookPoints - countBits(bn) * knightPoints - countBits(bb) * bishopPoints - countBits(bq) * queenPoints - countBits(bk) * kingPoints;
     }
 }
