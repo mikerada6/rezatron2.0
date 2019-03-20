@@ -1,7 +1,5 @@
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 
@@ -1565,6 +1563,20 @@ public class Test2 {
         Assert.assertEquals(97862, perft(b,3));
         Assert.assertEquals(4085603, perft(b,4));
         Assert.assertEquals(193690690, perft(b,5));
+    }
+
+    @Test
+    public void perft128()
+    {
+        Board b = new Board("rnbQkbnr/3ppppp/p1p5/8/8/2P5/PP1PPPPP/RNB1KBNR b KQkq - 0 ");
+        Assert.assertEquals(67820026 , perft(b,7));
+    }
+
+    @Test
+    public void perft129()
+    {
+        Board b = new Board("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
+        Assert.assertEquals(119060324 , perft(b,6));
     }
 
 }

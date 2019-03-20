@@ -1537,21 +1537,6 @@ public class Board {
         return moves;
     }
 
-    private ArrayList<Integer> legalizeMoves(ArrayList<Integer> moves) {
-        int count = 0;
-        long attacks = 0L;
-        long pins = 0L;
-        long kingMoves = 0L;
-        int kingSquare;
-        boolean check = false;
-        boolean kingSaftey = false;
-        long star = 0L;
-        // all subject squares are first genertated for white
-        // get a long of all knights that are a knights move away from the king
-        long testSquares = getKnightMovement(getWhiteKingSquare()) & bn;
-        return moves;
-    }
-
     private long getWhite() {
         return wr | wn | wb | wq | wk | wp;
     }
@@ -1790,5 +1775,9 @@ public class Board {
 
         return countBits(wp) * pawnPoints + countBits(wr) * rookPoints + countBits(wn) * knightPoints + countBits(wb) * bishopPoints + countBits(wq) * queenPoints + countBits(wk) * kingPoints -
                 countBits(bp) * pawnPoints - countBits(br) * rookPoints - countBits(bn) * knightPoints - countBits(bb) * bishopPoints - countBits(bq) * queenPoints - countBits(bk) * kingPoints;
+    }
+
+    public int zobristKey() {
+        return 0;
     }
 }
