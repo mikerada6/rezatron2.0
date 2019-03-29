@@ -1,4 +1,5 @@
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -40,6 +41,13 @@ public class Test2 {
             }
         }
         return nodes;
+    }
+    @BeforeMethod
+    public void setup()
+    {
+        //setup zobrist keys before the start of each test
+        Zobrist.zobristFillArray();
+        MinMax.clear();
     }
 
     @Test

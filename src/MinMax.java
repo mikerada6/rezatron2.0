@@ -7,7 +7,6 @@ public class MinMax {
     {
         ArrayList<Integer> newGameMoves = game.generateMovesNeo(true);
         if(depth==0 || newGameMoves.size()==0) {
-            //System.out.println(moveString +"\t" + (-1*game.evaluateBoard()));
             return 1*game.evaluateBoard();
         }
 
@@ -17,9 +16,13 @@ public class MinMax {
                 game.move(move);
                 int oldBest=bestMove;
                 bestMove = Math.max(bestMove,MinMax.minMax(depth-1,game,!isMaximisingPlayer, max, moveString+"\t"+game.translate(move)));
-                if(oldBest!=bestMove && depth==max)
+                if(oldBest!=bestMove && depth==max )
                 {
-                    best = moveString+"\t"+game.translate(move) + "\t|"+ (-1*game.evaluateBoard());
+                    String contender = moveString+"\t"+game.translate(move) + "\t|"+ (-1*game.evaluateBoard());
+                    if(contender.length()<best.length() || best.equals("")) {
+                        best = moveString + "\t" + game.translate(move) + "\t|" + (-1 * game.evaluateBoard());
+                        System.out.println(best);
+                    }
                 }
                 game.undo();
             }
@@ -33,11 +36,20 @@ public class MinMax {
                 bestMove = Math.min(bestMove,MinMax.minMax(depth-1,game,!isMaximisingPlayer, max, moveString+"\t"+game.translate(move)));
                 if(oldBest!=bestMove && depth==max)
                 {
-                    best = moveString+"\t"+game.translate(move) + "\t|"+ (-1*game.evaluateBoard());
+                    String contender = moveString+"\t"+game.translate(move) + "\t|"+ (-1*game.evaluateBoard());
+                    if(contender.length()<best.length() || best.equals("")) {
+                        best = moveString + "\t" + game.translate(move) + "\t|" + (-1 * game.evaluateBoard());
+                        System.out.println(best);
+                    }
+
                 }
                 game.undo();
             }
             return bestMove;
         }
+    }
+    public static void clear()
+    {
+        best="";
     }
 }
