@@ -12,6 +12,11 @@ public class Board {
     public static final int BISHOP = 3;
     public static final int KNIGHT = 4;
     public static final int ROOK = 5;
+    public static final int PAWN=0;
+    public static final int KING = 1;
+
+
+
     public static final int EPFLAG = 9;
     public static final int pawnPoints = 10;
     public static final int knightPoints = 30;
@@ -702,6 +707,9 @@ public class Board {
         updateHistory();
         // moves[moveCount] = move;
         moveCount++;
+    }
+    public void move(String move) {
+        this.move(this.translateToInt(move));
     }
 
     private String toString(Long test) {
@@ -1798,7 +1806,30 @@ public class Board {
                 countBits(bp) * pawnPoints - countBits(br) * rookPoints - countBits(bn) * knightPoints - countBits(bb) * bishopPoints - countBits(bq) * queenPoints - countBits(bk) * kingPoints;
     }
 
-    public int zobristKey() {
-        return 0;
+    public long zobristKey() {
+        long ans = 0L;
+        long[] stuff = {wp,wk,wq,wr,wn,wb,bp,bk,bq,br,bn,bb};
+        int[] color = {0,0,0,0,0,0,1,1,1,1,1,1};
+        int[] type = {PAWN,KING,QUEEN,ROOK,KNIGHT,BISHOP,PAWN,KING,QUEEN,ROOK,KNIGHT,BISHOP};
+        for(int tempKey=0;tempKey<stuff.length;tempKey++)
+        {
+            long temp = stuff[tempKey];
+            while(temp!=0) {
+                int square = Long.numberOfTrailingZeros(temp);
+                temp = temp ^ (1L << square);
+                ans ^= Zobrist.zArray[color[tempKey]][type[tempKey]][square];
+            }
+        }
+        long temp = getLong(enPassantTarget);
+        ans ^= Zobrist.zEnPassant[Long.numberOfTrailingZeros(temp)-1];
+
+        if(isWhitesTurn) {
+            return ans;
+        }
+        else
+        {
+            return ans ^ Zobrist.zBlackMove;
+        }
     }
 }
+

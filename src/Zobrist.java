@@ -2,16 +2,19 @@ import java.security.SecureRandom;
 
 public class Zobrist {
     static long[][][] zArray = new long[2][6][64];
-    static long[] zEnPassant = new long[8];
+    static long[] zEnPassant = new long[64];
     static long[] zCastle = new long[4];
     static long zBlackMove;
+    static long[] zdepgth = new long[10];
 
     public static long random64() {
         SecureRandom random = new SecureRandom();
         //a random seed is used for testing and debugging purposes.
-        random.setSeed(5920155765L);
+        random.setSeed(6092808926L);
         return random.nextLong();
     }
+
+
 
     public static void testDistribution() {
         int sampleSize = 2000;
@@ -38,7 +41,7 @@ public class Zobrist {
             }
         }
 
-        for (int column = 0; column < 8; column++) {
+        for (int column = 0; column < zEnPassant.length; column++) {
             zEnPassant[column] = random64();
         }
 
@@ -46,7 +49,13 @@ public class Zobrist {
             zCastle[i] = random64();
         }
 
+        for (int i = 0; i < zdepgth.length; i++) {
+            zdepgth[i] = random64();
+        }
+
         zBlackMove = random64();
     }
+
+
 
 }

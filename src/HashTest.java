@@ -3,8 +3,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
-public class Test2 {
+public class HashTest {
+    private HashMap<Long, Long> perftHash = new HashMap<Long, Long>();
 
     public String divide(Board board, int depth) {
         System.out.println("Divide for board :" + board.getFEN()
@@ -32,7 +34,7 @@ public class Test2 {
         return answer;
     }
 
-    private long perft(Board board, int depth) {
+    private long perftFull(Board board, int depth) {
         ArrayList<Integer> moveList = board.generateMovesNeo(true);
         if (depth == 1)
             return moveList.size();
@@ -47,7 +49,7 @@ public class Test2 {
         return nodes;
     }
 
-    private long diveIn(Board board, int depth) {
+    private long diveInFull(Board board, int depth) {
         ArrayList<Integer> moveList = board.generateMovesNeo(true);
         if (moveList.size() == 0 && depth != 0) {
             return 0;
@@ -68,24 +70,96 @@ public class Test2 {
         }
         return nodes;
     }
+
+    private long perft(Board board, int depth) {
+        ArrayList<Integer> moveList = board.generateMovesNeo(true);
+        long key = board.zobristKey() ^ Zobrist.zdepgth[depth];
+        if(perftHash.containsKey(key))
+        {
+            System.out.println("We've been here already");
+            return perftHash.get(key);
+        }
+        if (depth == 1) {
+
+            perftHash.put(key, (long) moveList.size());
+            return moveList.size();
+        }
+        long nodes = 0;
+        if (!moveList.equals("")) {
+            for (int i = 0; i < moveList.size(); i++) {
+                board.move(moveList.get(i));
+                nodes += diveIn(board,depth - 1);
+                board.undo();
+            }
+        }
+        perftHash.put(key, nodes);
+        return nodes;
+    }
+
+    private long diveIn(Board board, int depth) {
+        ArrayList<Integer> moveList = board.generateMovesNeo(true);
+        long key = board.zobristKey() ^ Zobrist.zdepgth[depth];
+        if(perftHash.containsKey(key))
+        {
+//            Board newBoard = new Board(board.getFEN());
+//            long fullAns = perftFull(newBoard,depth);
+//            if(fullAns==perftHash.get(key)) {
+                return perftHash.get(key);
+//            }
+//            else
+//            {
+//                System.out.println("ERROR AT" + newBoard);
+//                System.out.println("ERROR AT" + newBoard.getFEN());
+//                System.out.println("HASH: "  + perftHash.get(key));
+//                System.out.println("PERFT: "  + fullAns);
+//                System.out.println("DEPTH: " + depth);
+////                int error =0/0;
+//            }
+        }
+        if (moveList.size() == 0 && depth != 0) {
+            perftHash.put(key, 0L);
+            return 0;
+        } else if (moveList.size() == 0 || depth == 1) {
+            perftHash.put(key, (long) moveList.size());
+            return moveList.size();
+        }
+        long nodes = 0;
+        if (depth == 0) {
+            perftHash.put(key, 1L);
+            return 1;
+        }
+
+        if (!moveList.equals("")) {
+            for (int i = 0; i < moveList.size(); i++) {
+                board.move(moveList.get(i));
+                nodes += diveIn(board, depth - 1);
+                board.undo();
+            }
+        }
+        perftHash.put(key, nodes);
+        return nodes;
+    }
     @BeforeMethod
     public void setup()
     {
         //setup zobrist keys before the start of each test
+        System.out.println("STARTING");
         Zobrist.zobristFillArray();
+        perftHash = new HashMap<Long, Long>();
         MinMax.clear();
     }
+
 
     @Test
     public void divide1()
     {
         Board b = new Board("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
         b.move(b.translateToInt("a2a4"));
-        b.move(b.translateToInt("b7b5"));
-        int moves =2;
+        int moves =1;
         System.out.println(divide(b,5-moves));
         Assert.assertEquals(4865609, perft(b,5-moves));
     }
+
 
     @Test
     public void perft1()
@@ -1624,5 +1698,6 @@ public class Test2 {
         Board b = new Board("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
         Assert.assertEquals(119060324 , perft(b,6));
     }
+
 
 }
