@@ -2,7 +2,7 @@ import java.security.SecureRandom;
 
 public class Zobrist {
     static long[][][] zArray = new long[2][6][64];
-    static long[] zEnPassant = new long[64];
+    static long[] zEnPassant = new long[8];
     static long[] zCastle = new long[4];
     static long zBlackMove;
     static long[] zdepgth = new long[10];

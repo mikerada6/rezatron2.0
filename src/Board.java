@@ -1821,7 +1821,7 @@ public class Board {
             }
         }
         long temp = getLong(enPassantTarget);
-        ans ^= Zobrist.zEnPassant[Long.numberOfTrailingZeros(temp)-1];
+        ans ^= Zobrist.zEnPassant[(Long.numberOfTrailingZeros(temp)-1)/8];
 
         if(isWhitesTurn) {
             return ans;
