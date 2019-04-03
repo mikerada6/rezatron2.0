@@ -1608,7 +1608,9 @@ public class Test2 {
         Assert.assertEquals(2039, perft(b,2));
         Assert.assertEquals(97862, perft(b,3));
         Assert.assertEquals(4085603, perft(b,4));
-        Assert.assertEquals(193690690, perft(b,5));
+        long temp = perft(b,5);
+        Assert.assertEquals(193690690,temp );
+        System.out.println(temp);
     }
 
     @Test

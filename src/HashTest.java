@@ -67,7 +67,7 @@ public class HashTest {
         if (!moveList.equals("")) {
             for (int i = 0; i < moveList.size(); i++) {
                 board.move(moveList.get(i));
-                nodes += diveIn(board,depth - 1);
+                nodes += diveInFull(board,depth - 1);
                 board.undo();
             }
         }
@@ -167,13 +167,13 @@ public class HashTest {
 
 
 
-    @Parameters({"board", "depth","score"})
-    @Test
-    public void perft(String board, int depth, long score)
-    {
-        Board b = new Board(board);
-        Assert.assertEquals(score, perft(b,depth));
-    }
+//    @Parameters({"board", "depth","score"})
+//    @Test
+//    public void perft(String board, int depth, long score)
+//    {
+//        Board b = new Board(board);
+//        Assert.assertEquals(score, perft(b,depth));
+//    }
     @Test
     public void perft1_1(){
         Board b = new Board("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
@@ -4739,8 +4739,6 @@ public class HashTest {
         Board b = new Board("r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1 ");
         Assert.assertEquals(perft(b,5),193690690);
     }
-
-
 
 
 

@@ -1820,6 +1820,24 @@ public class Board {
                 ans ^= Zobrist.zArray[color[tempKey]][type[tempKey]][square];
             }
         }
+        String[] fen = this.getFEN().split(" ");
+        if(fen[2].contains("K"))
+        {
+            ans ^= Zobrist.zCastle[0];
+        }
+        if(fen[2].contains("Q"))
+        {
+            ans ^= Zobrist.zCastle[1];
+        }
+        if(fen[2].contains("k"))
+        {
+            ans ^= Zobrist.zCastle[2];
+        }
+        if(fen[2].contains("q"))
+        {
+            ans ^= Zobrist.zCastle[3];
+        }
+
         long temp = getLong(enPassantTarget);
         ans ^= Zobrist.zEnPassant[(Long.numberOfTrailingZeros(temp)-1)/8];
 
