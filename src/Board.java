@@ -12,9 +12,8 @@ public class Board {
     public static final int BISHOP = 3;
     public static final int KNIGHT = 4;
     public static final int ROOK = 5;
-    public static final int PAWN=0;
+    public static final int PAWN = 0;
     public static final int KING = 1;
-
 
 
     public static final int EPFLAG = 9;
@@ -320,7 +319,7 @@ public class Board {
     }
 
     public static int translateToInt(String move) {
-        move=move.toLowerCase();
+        move = move.toLowerCase();
 
         if (move.equalsIgnoreCase("e1g1")) {
             return (04061);
@@ -708,8 +707,9 @@ public class Board {
         // moves[moveCount] = move;
         moveCount++;
     }
+
     public void move(String move) {
-        this.move(this.translateToInt(move));
+        this.move(translateToInt(move));
     }
 
     private String toString(Long test) {
@@ -1780,24 +1780,17 @@ public class Board {
     }
 
     public int evaluateBoard() {
-        int moves= this.getMoveCount();
-        if(moves==0 && isWhitesTurn)
-        {
-            if(isWhiteChecked()) {
+        int moves = this.getMoveCount();
+        if (moves == 0 && isWhitesTurn) {
+            if (isWhiteChecked()) {
                 return -10000;
-            }
-            else
-            {
+            } else {
                 return 0;
             }
-        }
-        else if(moves==0 && !isWhitesTurn)
-        {
-            if(isBlackChecked()) {
+        } else if (moves == 0 && !isWhitesTurn) {
+            if (isBlackChecked()) {
                 return 10000;
-            }
-            else
-            {
+            } else {
                 return 0;
             }
         }
@@ -1808,46 +1801,64 @@ public class Board {
 
     public long zobristKey() {
         long ans = 0L;
-        long[] stuff = {wp,wk,wq,wr,wn,wb,bp,bk,bq,br,bn,bb};
-        int[] color = {0,0,0,0,0,0,1,1,1,1,1,1};
-        int[] type = {PAWN,KING,QUEEN,ROOK,KNIGHT,BISHOP,PAWN,KING,QUEEN,ROOK,KNIGHT,BISHOP};
-        for(int tempKey=0;tempKey<stuff.length;tempKey++)
-        {
+        long[] stuff = {wp, wk, wq, wr, wn, wb, bp, bk, bq, br, bn, bb};
+        int[] color = {0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1};
+        int[] type = {PAWN, KING, QUEEN, ROOK, KNIGHT, BISHOP, PAWN, KING, QUEEN, ROOK, KNIGHT, BISHOP};
+        for (int tempKey = 0; tempKey < stuff.length; tempKey++) {
             long temp = stuff[tempKey];
-            while(temp!=0) {
+            while (temp != 0) {
                 int square = Long.numberOfTrailingZeros(temp);
                 temp = temp ^ (1L << square);
                 ans ^= Zobrist.zArray[color[tempKey]][type[tempKey]][square];
             }
         }
         String[] fen = this.getFEN().split(" ");
-        if(fen[2].contains("K"))
-        {
+        if (fen[2].contains("K")) {
             ans ^= Zobrist.zCastle[0];
         }
-        if(fen[2].contains("Q"))
-        {
+        if (fen[2].contains("Q")) {
             ans ^= Zobrist.zCastle[1];
         }
-        if(fen[2].contains("k"))
-        {
+        if (fen[2].contains("k")) {
             ans ^= Zobrist.zCastle[2];
         }
-        if(fen[2].contains("q"))
-        {
+        if (fen[2].contains("q")) {
             ans ^= Zobrist.zCastle[3];
         }
 
-        long temp = getLong(enPassantTarget);
-        ans ^= Zobrist.zEnPassant[(Long.numberOfTrailingZeros(temp)-1)/8];
 
-        if(isWhitesTurn) {
-            return ans;
+        try {
+            ans ^= Zobrist.zEnPassant[getColumn(enPassantTarget)];
+        } catch (Exception e) {
         }
-        else
-        {
+
+        if (isWhitesTurn) {
+            return ans;
+        } else {
             return ans ^ Zobrist.zBlackMove;
         }
     }
+
+    private int getColumn(String square) {
+        String column = square.charAt(0) + "";
+        if (column.equalsIgnoreCase("A"))
+            return 0;
+        else if (column.equalsIgnoreCase("B"))
+            return 1;
+        else if (column.equalsIgnoreCase("C"))
+            return 2;
+        else if (column.equalsIgnoreCase("D"))
+            return 3;
+        else if (column.equalsIgnoreCase("E"))
+            return 4;
+        else if (column.equalsIgnoreCase("F"))
+            return 5;
+        else if (column.equalsIgnoreCase("G"))
+            return 6;
+        else if (column.equalsIgnoreCase("H"))
+            return 7;
+        else return -1;
+    }
+
 }
 

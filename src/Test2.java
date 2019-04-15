@@ -80,8 +80,8 @@ public class Test2 {
     public void divide1()
     {
         Board b = new Board("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
-        b.move(b.translateToInt("a2a4"));
-        b.move(b.translateToInt("b7b5"));
+        b.move(Board.translateToInt("a2a4"));
+        b.move(Board.translateToInt("b7b5"));
         int moves =2;
         System.out.println(divide(b,5-moves));
         Assert.assertEquals(4865609, perft(b,5-moves));
@@ -1625,6 +1625,18 @@ public class Test2 {
     {
         Board b = new Board("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
         Assert.assertEquals(119060324 , perft(b,6));
+    }
+
+    @Test
+    public void temp() {
+        Board b = new Board("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
+        Board b1 = new Board("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
+        perft(b1, 5);
+        b.move("a2a4");
+        b.move("h7h5");
+        b.move("a4a5");
+        System.out.println(divide(b, 2));
+        Assert.assertEquals(perft(b, 5), 4865609);
     }
 
 }
