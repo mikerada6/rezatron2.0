@@ -14,5 +14,9 @@ public class Runner {
         System.out.println(b);
         AlphaBeta ab = new AlphaBeta(b);
         System.out.println(ab.search(1));
+        System.out.println(ab.search(2));
+        System.out.println(ab.search(3));
+        System.out.println(ab.search(4));
+        System.out.println(ab.search(5));
     }
 }

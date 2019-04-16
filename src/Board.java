@@ -1794,9 +1794,11 @@ public class Board {
                 return 0;
             }
         }
-
-        return countBits(wp) * pawnPoints + countBits(wr) * rookPoints + countBits(wn) * knightPoints + countBits(wb) * bishopPoints + countBits(wq) * queenPoints + countBits(wk) * kingPoints -
-                countBits(bp) * pawnPoints - countBits(br) * rookPoints - countBits(bn) * knightPoints - countBits(bb) * bishopPoints - countBits(bq) * queenPoints - countBits(bk) * kingPoints;
+        int whoToMove=1;
+        if(!isWhitesTurn)
+            whoToMove=-1;
+        return whoToMove*(countBits(wp) * pawnPoints + countBits(wr) * rookPoints + countBits(wn) * knightPoints + countBits(wb) * bishopPoints + countBits(wq) * queenPoints + countBits(wk) * kingPoints -
+                countBits(bp) * pawnPoints - countBits(br) * rookPoints - countBits(bn) * knightPoints - countBits(bb) * bishopPoints - countBits(bq) * queenPoints - countBits(bk) * kingPoints);
     }
 
     public long zobristKey() {
