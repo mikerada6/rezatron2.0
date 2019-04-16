@@ -1375,13 +1375,13 @@ public class Board {
         return Long.numberOfTrailingZeros(bk);
     }
 
-    private boolean isWhiteChecked() {
+    public boolean isWhiteChecked() {
         long attacks = blackPawnAttackLeft() | blackPawnAttackRight()
                 | getBlackMovement();
         return isAttackedbyBlack(getWhiteKingSquare(), attacks);
     }
 
-    private boolean isBlackChecked() {
+    public boolean isBlackChecked() {
         long attacks = whitePawnAttackLeft() | whitePawnAttackRight()
                 | getWhiteMovement();
         return isAttackedbyWhite(getBlackKingSquare(), attacks);
@@ -1779,26 +1779,30 @@ public class Board {
         return printBoard;
     }
 
+    public int sideToMoveScore()
+    {
+        if (isWhitesTurn)
+            return evaluateBoard();
+        return -1*evaluateBoard();
+    }
+
     public int evaluateBoard() {
         int moves = this.getMoveCount();
         if (moves == 0 && isWhitesTurn) {
             if (isWhiteChecked()) {
-                return -10000;
+                return -32767;
             } else {
                 return 0;
             }
         } else if (moves == 0 && !isWhitesTurn) {
             if (isBlackChecked()) {
-                return 10000;
+                return 32767;
             } else {
                 return 0;
             }
         }
-        int whoToMove=1;
-        if(!isWhitesTurn)
-            whoToMove=-1;
-        return whoToMove*(countBits(wp) * pawnPoints + countBits(wr) * rookPoints + countBits(wn) * knightPoints + countBits(wb) * bishopPoints + countBits(wq) * queenPoints + countBits(wk) * kingPoints -
-                countBits(bp) * pawnPoints - countBits(br) * rookPoints - countBits(bn) * knightPoints - countBits(bb) * bishopPoints - countBits(bq) * queenPoints - countBits(bk) * kingPoints);
+        return countBits(wp) * pawnPoints + countBits(wr) * rookPoints + countBits(wn) * knightPoints + countBits(wb) * bishopPoints + countBits(wq) * queenPoints + countBits(wk) * kingPoints -
+                countBits(bp) * pawnPoints - countBits(br) * rookPoints - countBits(bn) * knightPoints - countBits(bb) * bishopPoints - countBits(bq) * queenPoints - countBits(bk) * kingPoints;
     }
 
     public long zobristKey() {
