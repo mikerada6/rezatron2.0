@@ -1629,14 +1629,10 @@ public class Test2 {
 
     @Test
     public void temp() {
-        Board b = new Board("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
-        Board b1 = new Board("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
-        perft(b1, 5);
-        b.move("a2a4");
-        b.move("h7h5");
-        b.move("a4a5");
-        System.out.println(divide(b, 2));
-        Assert.assertEquals(perft(b, 5), 4865609);
+        Board b = new Board("r7/1k1P4/8/8/8/8/6K1/7R w - 0 1");
+        System.out.println(b);
+        System.out.println(perft(b, 6));
+
     }
 
 }

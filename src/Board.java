@@ -1860,5 +1860,10 @@ public class Board {
         else return -1;
     }
 
+    public boolean isWhitesTurn()
+    {
+        return isWhitesTurn;
+    }
+
 }
 

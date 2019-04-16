@@ -1398,6 +1398,8 @@ public class HashTest {
         Assert.assertEquals(perft(b,6),195629489);
     }
 
+
+
     @Test
     public void perft35_1(){
         Board b = new Board("2r1k2r/8/8/8/8/8/8/R3K2R b KQk - 0 1");
@@ -4740,6 +4742,15 @@ public class HashTest {
         Assert.assertEquals(perft(b,5),193690690);
     }
 
+    @Test
+    public void temp() {
+        Board b = new Board("8/2k2p2/2b3p1/P1p1Np2/1p3b2/1P1K4/5r2/R3R3 b - - 0 1");
+        String next = "6k1/5p2/1p5p/p4Np1/5q2/Q6P/PPr5/3R3K w - - 1 0";
+        b=new Board(next);
+        System.out.println(b);
+        Assert.assertEquals(perft(b,4),1468528);
+
+    }
 
 
 }
